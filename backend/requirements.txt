@@ -3,3 +3,4 @@ uvicorn
 openai
 pdfplumber
 python-multipart
+python-dotenv
