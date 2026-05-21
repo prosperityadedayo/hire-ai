@@ -1,97 +1,46 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import JobDescriptionInput from '@/components/job-description-input'
-import CandidateRankings from '@/components/candidate-rankings'
-import { Briefcase } from 'lucide-react'
+import { useState } from "react";
+import JobDescriptionInput from "@/components/job-description-input";
+import CandidateRankings from "@/components/candidate-rankings";
+import { Briefcase } from "lucide-react";
+import { analyseCandidates } from "@/lib/api";
 
 export default function Home() {
-  const [jobDescription, setJobDescription] = useState('')
-  const [uploadedFiles, setUploadedFiles] = useState<File[]>([])
-  const [isAnalyzing, setIsAnalyzing] = useState(false)
-  const [results, setResults] = useState<any>(null)
+  const [jobDescription, setJobDescription] = useState("");
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [results, setResults] = useState<any>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleAnalyze = async () => {
     if (!jobDescription.trim() || uploadedFiles.length === 0) {
-      alert('Please enter a job description and upload at least one CV')
-      return
+      alert("Please enter a job description and upload at least one CV");
+      return;
     }
 
-    setIsAnalyzing(true)
-    // Simulate API call - in a real app, this would send to your backend
-    setTimeout(() => {
-      // Mock results for demonstration
+    setError(null);
+    setIsAnalyzing(true);
+    try {
+      const analysis = await analyseCandidates(jobDescription, uploadedFiles);
       setResults({
-        candidates: [
-          {
-            id: 1,
-            name: 'Sarah Johnson',
-            filename: 'sarah-johnson.pdf',
-            matchScore: 92,
-            strengths: [
-              '8 years of relevant experience',
-              'Strong leadership background',
-              'Proven track record with similar roles',
-              'Excellent communication skills'
-            ],
-            redFlags: [
-              'Recently changed jobs (2x in 3 years)',
-              'Gap in employment (6 months)'
-            ],
-            interviewQuestions: [
-              'Can you walk us through your most significant project achievement?',
-              'How do you approach team management and delegation?',
-              'Tell us about a time you had to learn a completely new skill quickly.'
-            ]
-          },
-          {
-            id: 2,
-            name: 'Michael Chen',
-            filename: 'michael-chen.pdf',
-            matchScore: 78,
-            strengths: [
-              '5 years of experience in the field',
-              'Technical expertise matches requirements',
-              'Certifications in relevant areas',
-              'Positive references'
-            ],
-            redFlags: [
-              'Limited management experience',
-              'Education level below preference'
-            ],
-            interviewQuestions: [
-              'What are your long-term career goals?',
-              'Describe a challenging situation and how you resolved it.',
-              'How do you stay updated with industry trends?'
-            ]
-          },
-          {
-            id: 3,
-            name: 'Emily Rodriguez',
-            filename: 'emily-rodriguez.pdf',
-            matchScore: 65,
-            strengths: [
-              'Relevant degree and certifications',
-              'Enthusiastic and quick learner',
-              'Good communication skills',
-              'Flexible and adaptable'
-            ],
-            redFlags: [
-              'Limited experience (only 2 years)',
-              'No direct experience in primary role',
-              'May require significant training'
-            ],
-            interviewQuestions: [
-              'What attracted you to this role?',
-              'How do you handle feedback and criticism?',
-              'Describe your ideal work environment.'
-            ]
-          }
-        ]
-      })
-      setIsAnalyzing(false)
-    }, 2000)
-  }
+        candidates: analysis.candidates.map((candidate, index) => ({
+          id: candidate.rank ?? index + 1,
+          ...candidate,
+        })),
+      });
+    } catch (requestError) {
+      const message =
+        requestError instanceof Error
+          ? requestError.message
+          : "Failed to analyse candidates.";
+      setResults(null);
+      setError(message);
+      alert(message);
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
 
   return (
     <main className="min-h-screen bg-slate-950">
@@ -104,7 +53,9 @@ export default function Home() {
             </div>
             <div>
               <h1 className="text-3xl font-bold text-white">HireAI</h1>
-              <p className="text-sm text-slate-400">AI-powered candidate ranking for your business</p>
+              <p className="text-sm text-slate-400">
+                AI-powered candidate ranking for your business
+              </p>
             </div>
           </div>
         </div>
@@ -127,9 +78,10 @@ export default function Home() {
           <CandidateRankings
             results={results}
             isAnalyzing={isAnalyzing}
+            error={error}
           />
         </div>
       </div>
     </main>
-  )
+  );
 }
