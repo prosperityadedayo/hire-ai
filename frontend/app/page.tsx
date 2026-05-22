@@ -10,6 +10,7 @@ import {
   Star,
   Users,
 } from "lucide-react";
+import Link from "next/link";
 
 const HomePage = () => {
   return (
@@ -65,11 +66,14 @@ const HomePage = () => {
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button
+                  asChild
                   size="lg"
                   className="bg-blue-600 text-white hover:bg-blue-500"
                 >
-                  Try demo
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <Link href="/demo">
+                    Try demo
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
                 </Button>
                 <Button
                   variant="outline"
@@ -397,8 +401,12 @@ const HomePage = () => {
               </h2>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-500">
-                Analyze candidates now
+              <Button
+                asChild
+                size="lg"
+                className="bg-blue-600 hover:bg-blue-500"
+              >
+                <Link href="/demo">Analyze candidates now</Link>
               </Button>
               <Button
                 size="lg"
