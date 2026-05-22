@@ -34,10 +34,10 @@ const HomePage = () => {
                 How it works
               </a>
               <a href="#results" className="transition hover:text-white">
-                Results
+                Output
               </a>
-              <a href="#faq" className="transition hover:text-white">
-                FAQ
+              <a href="#roadmap" className="transition hover:text-white">
+                Roadmap
               </a>
             </div>
             <Button
@@ -52,15 +52,16 @@ const HomePage = () => {
             <div>
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-blue-400/40 bg-blue-500/10 px-3 py-1 text-xs font-medium uppercase tracking-wide text-blue-200">
                 <Sparkles className="h-3.5 w-3.5" />
-                AI Hiring Assistant
+                Built for small and medium businesses
               </div>
               <h1 className="max-w-[18ch] text-4xl font-bold leading-tight md:text-6xl">
-                AI-powered candidate ranking for teams that hire fast
+                The hiring assistant SMEs use to screen candidates in 30 seconds
               </h1>
               <p className="mt-5 max-w-[58ch] text-lg text-slate-300">
-                Upload resumes, match against your role requirements, and get a
-                ranked shortlist in seconds. HireAI helps recruiters focus on
-                decisions, not manual screening.
+                HireAI gives business owners the judgment of a senior recruiter
+                without the overhead of building an in-house HR team. Paste a
+                job description, upload candidate CVs, and receive a ranked,
+                structured assessment in one pass.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button
@@ -81,15 +82,15 @@ const HomePage = () => {
               <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-slate-300">
                 <div className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-emerald-400" />
-                  SOC 2-ready workflow
+                  Up to 5 CVs analyzed in one batch
                 </div>
                 <div className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-emerald-400" />
-                  Resume parsing in under 30 seconds
+                  Typical turnaround: 30 seconds
                 </div>
                 <div className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-emerald-400" />
-                  Human-in-the-loop scoring
+                  Ranked results with interview questions
                 </div>
               </div>
             </div>
@@ -97,13 +98,13 @@ const HomePage = () => {
             <div className="rounded-3xl border border-white/10 bg-slate-900/70 p-5 shadow-2xl shadow-blue-950/30 backdrop-blur">
               <div className="rounded-2xl border border-white/10 bg-slate-950/80 p-5">
                 <p className="mb-4 text-xs font-medium uppercase tracking-wider text-slate-400">
-                  Candidate ranking preview
+                  Live output preview
                 </p>
                 <div className="space-y-3">
                   {[
-                    { name: "Maya Patel", score: 96, roleFit: "Excellent" },
-                    { name: "Jonas Reed", score: 89, roleFit: "Strong" },
-                    { name: "Lucia Kim", score: 84, roleFit: "Promising" },
+                    { name: "Maya Patel", score: 96, roleFit: "Strong Match" },
+                    { name: "Jonas Reed", score: 71, roleFit: "Partial Match" },
+                    { name: "Lucia Kim", score: 48, roleFit: "Weak Match" },
                   ].map((candidate) => (
                     <div
                       key={candidate.name}
@@ -132,10 +133,10 @@ const HomePage = () => {
       <section className="border-b border-white/10 bg-slate-900/50">
         <div className="mx-auto grid w-full max-w-7xl grid-cols-2 gap-6 px-6 py-10 text-slate-300 md:grid-cols-4 md:px-10">
           {[
-            { label: "Applications screened", value: "2.1M+" },
-            { label: "Average time saved", value: "73%" },
-            { label: "Recruiting teams", value: "1,400+" },
-            { label: "Candidate satisfaction", value: "4.8/5" },
+            { label: "CVs per analysis", value: "Up to 5" },
+            { label: "Match score range", value: "0-100" },
+            { label: "Interview questions", value: "3 each" },
+            { label: "Typical analysis time", value: "30 sec" },
           ].map((stat) => (
             <div
               key={stat.label}
@@ -159,45 +160,45 @@ const HomePage = () => {
             Features
           </p>
           <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-            Everything you need to shortlist the right talent confidently
+            Production-ready features that remove manual CV screening
           </h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {[
             {
-              title: "AI Resume Analysis",
+              title: "Multi-CV Analysis",
               description:
-                "Extracts skills, achievements, and role alignment from every CV automatically.",
+                "Upload up to five CVs at once and process candidates in a single batch.",
               icon: FileSearch,
             },
             {
-              title: "Bias-Aware Ranking",
+              title: "AI-Powered Scoring",
               description:
-                "Scorecards focus on qualification signals and make decision criteria transparent.",
+                "Each candidate receives a 0-100 match score based on alignment with your job description.",
               icon: ShieldCheck,
             },
             {
-              title: "Team Calibration",
+              title: "Structured Assessment",
               description:
-                "Share score rationale and align recruiters and hiring managers on candidate quality.",
+                "Every report includes strengths, red flags, and a clear match label for faster decision-making.",
               icon: Users,
             },
             {
-              title: "Fast Turnaround",
+              title: "Interview Question Generation",
               description:
-                "Go from upload to ranked shortlist in minutes, even during high-volume hiring.",
+                "HireAI creates three tailored interview questions per candidate based on profile gaps.",
               icon: Clock3,
             },
             {
-              title: "Custom Role Rubrics",
+              title: "Ranked Results",
               description:
-                "Define what top talent looks like for each role with weighted evaluation criteria.",
+                "Candidates are automatically ordered from strongest to weakest fit for the role.",
               icon: Star,
             },
             {
-              title: "Actionable Summaries",
+              title: "PDF CV Support",
               description:
-                "Get concise interview prompts and risk flags for every shortlisted candidate.",
+                "Upload real-world PDF resumes directly with no formatting or template conversion required.",
               icon: Sparkles,
             },
           ].map((feature) => (
@@ -226,12 +227,12 @@ const HomePage = () => {
                 How it works
               </p>
               <h2 className="mt-2 text-3xl font-bold md:text-4xl">
-                Simple workflow, enterprise-level impact
+                Senior-level screening judgment, without senior-level cost
               </h2>
             </div>
             <p className="max-w-md text-sm text-slate-300">
-              Built for talent teams who need speed without sacrificing hiring
-              quality.
+              Designed for owners and managers who need consistent hiring
+              decisions but do not have dedicated recruitment teams.
             </p>
           </div>
 
@@ -239,18 +240,18 @@ const HomePage = () => {
             {[
               {
                 step: "01",
-                title: "Upload role and resumes",
-                text: "Paste your job description and upload candidate documents in bulk.",
+                title: "Paste your job description",
+                text: "Define requirements once so every candidate is evaluated against the same criteria.",
               },
               {
                 step: "02",
-                title: "Review AI ranking",
-                text: "HireAI scores candidates against your rubric with explainable rationale.",
+                title: "Upload candidate CVs",
+                text: "Add up to five PDF CVs and let HireAI extract relevant experience and skill signals.",
               },
               {
                 step: "03",
-                title: "Move best fits forward",
-                text: "Share shortlist insights with hiring managers and schedule interviews faster.",
+                title: "Receive ranked assessments",
+                text: "Review scores, strengths, red flags, and tailored interview questions in around 30 seconds.",
               },
             ].map((item) => (
               <div
@@ -275,14 +276,14 @@ const HomePage = () => {
         <div className="grid items-start gap-8 lg:grid-cols-2">
           <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-8">
             <h3 className="text-2xl font-bold">
-              What teams report after 30 days
+              What you get in every analysis
             </h3>
             <ul className="mt-6 space-y-4">
               {[
-                "Reduced first-pass screening from 9 hours to 2 hours per role",
-                "Improved interview-to-offer conversion by 28%",
-                "Standardized scorecards across recruiting teams",
-                "Cut time-to-shortlist from 5 days to 1 day",
+                "Candidate-by-candidate match score with a clear 0-100 scale",
+                "Strengths summary linked to the role requirements",
+                "Red flags that may need deeper interview validation",
+                "Three tailored interview questions for each candidate",
               ].map((point) => (
                 <li key={point} className="flex gap-3 text-slate-200">
                   <Check className="mt-0.5 h-5 w-5 shrink-0 text-emerald-300" />
@@ -292,32 +293,50 @@ const HomePage = () => {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-8">
-            <h3 className="text-2xl font-bold">Loved by hiring teams</h3>
+          <div
+            id="roadmap"
+            className="rounded-2xl border border-white/10 bg-slate-900/60 p-8"
+          >
+            <h3 className="text-2xl font-bold">Product roadmap</h3>
             <div className="mt-6 space-y-4">
               {[
                 {
-                  quote:
-                    "HireAI helped us spot standout candidates we would have missed in manual review.",
-                  name: "T. Lawson",
-                  role: "Head of Talent, Northloop",
+                  phase: "Phase 2",
+                  title: "Employer accounts",
+                  detail:
+                    "Sign up, save job postings, and revisit candidate analysis history by role.",
                 },
                 {
-                  quote:
-                    "The explainable scoring made it much easier to align recruiters with hiring managers.",
-                  name: "A. Rivera",
-                  role: "People Ops Lead, Clarity Labs",
+                  phase: "Phase 3",
+                  title: "Candidate portal",
+                  detail:
+                    "Create shareable application links and let candidates apply directly through HireAI.",
                 },
-              ].map((review) => (
-                <blockquote
-                  key={review.name}
+                {
+                  phase: "Phase 4",
+                  title: "Communication tools",
+                  detail:
+                    "Email shortlisted candidates, schedule interviews, and use rejection templates.",
+                },
+                {
+                  phase: "Phase 5",
+                  title: "Advanced intelligence",
+                  detail:
+                    "Bias detection, diversity insights, and long-term score-to-performance tracking.",
+                },
+              ].map((item) => (
+                <article
+                  key={item.phase}
                   className="rounded-xl border border-white/10 bg-slate-950/50 p-4"
                 >
-                  <p className="text-sm text-slate-200">"{review.quote}"</p>
-                  <footer className="mt-3 text-xs text-slate-400">
-                    {review.name} - {review.role}
-                  </footer>
-                </blockquote>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-blue-300">
+                    {item.phase}
+                  </p>
+                  <h4 className="mt-1 text-base font-semibold text-white">
+                    {item.title}
+                  </h4>
+                  <p className="mt-2 text-sm text-slate-300">{item.detail}</p>
+                </article>
               ))}
             </div>
           </div>
@@ -331,7 +350,7 @@ const HomePage = () => {
               FAQ
             </p>
             <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-              Common questions from recruiting teams
+              Common questions from SMEs
             </h2>
           </div>
 
@@ -339,19 +358,19 @@ const HomePage = () => {
             {[
               {
                 q: "Can we customize how candidates are scored?",
-                a: "Yes. You can define role-specific criteria, weighting, and must-have skills for every open position.",
+                a: "Yes. Each analysis starts from your job description, so scoring reflects your specific role requirements.",
               },
               {
-                q: "Does HireAI replace recruiters?",
-                a: "No. It accelerates screening and gives structured insights, while final decisions remain with your team.",
+                q: "How many CVs can we analyze at once?",
+                a: "You can upload up to five candidate CVs per analysis and receive ranked outputs in one run.",
               },
               {
-                q: "How quickly can we start using it?",
-                a: "Most teams are up and running in under an hour with no complex setup required.",
+                q: "What format do CVs need to be in?",
+                a: "PDF CVs are supported directly, so you can use resumes exactly as candidates submit them.",
               },
               {
-                q: "Can we use this for high-volume hiring?",
-                a: "Absolutely. The platform is designed to process large candidate batches while preserving ranking quality.",
+                q: "What does the output include?",
+                a: "Each candidate report includes a 0-100 match score, strengths, red flags, a match label, and three tailored interview questions.",
               },
             ].map((item) => (
               <article
@@ -371,22 +390,22 @@ const HomePage = () => {
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="text-sm uppercase tracking-widest text-blue-200">
-                Ready to hire smarter?
+                Ready to stop manual CV screening?
               </p>
               <h2 className="mt-2 max-w-[20ch] text-3xl font-bold md:text-4xl">
-                Launch your first AI-powered shortlist today
+                Hire better, faster, and more consistently with HireAI
               </h2>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button size="lg" className="bg-blue-600 hover:bg-blue-500">
-                Start free trial
+                Analyze candidates now
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-white/30 bg-white/5 text-white hover:bg-white/10"
               >
-                Talk to sales
+                See product demo
               </Button>
             </div>
           </div>
@@ -394,7 +413,7 @@ const HomePage = () => {
       </section>
 
       <footer className="border-t border-white/10 px-6 py-8 text-center text-sm text-slate-400 md:px-10">
-        <p>2026 HireAI. Built for modern recruiting teams.</p>
+        <p>2026 HireAI. AI hiring support for small and medium businesses.</p>
       </footer>
     </main>
   );
