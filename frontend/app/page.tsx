@@ -45,7 +45,7 @@ const HomePage = () => {
               size="sm"
               className="bg-blue-600 text-white hover:bg-blue-500"
             >
-              Start free
+              <Link href="/demo">Start free</Link>
             </Button>
           </nav>
 
